@@ -18,21 +18,29 @@ nav a{
 .logo{
     text-align: center;
 }
-.texxt{
-    padding-left: 26%;
-    inline-size: 900px;
-    overflow-wrap: break-word;
-}
 .tocs1 {
-    margin:0 auto;
-    color:navy;
+    margin: 0 auto;
+    color: navy;
     border: dashed 5px gray;
     background-color: lightyellow;
-    box-shadow: 0 10px 10px rgba(5, 0, 0,0.5);
+    box-shadow: 0 10px 10px rgba(5, 0, 0, 0.5);
     border-radius: 10px;
-    padding-right: 30px;
-    max-width: 850px;
-  }
+    padding: 15px;
+    max-width:  60%; /* 目次の最大幅 */
+    width: 100%; /* 親要素の幅に適応 */
+    box-sizing: border-box; /* パディングを含めて幅を計算 */
+}
+
+.texxt {
+    margin: 20px auto 0; /* 上下のマージンを設定 */
+    max-width: 60%; /* 目次の最大幅に揃える */
+    width: 100%; /* 親要素の幅に合わせる */
+    box-sizing: border-box; /* パディングを含めた幅計算 */
+    padding: 15px; /* 内側の余白 */
+    overflow-wrap: break-word; /* テキストがはみ出さないようにする */
+    text-align: justify; /* テキストを整列 */
+}
+
 .slider img {
     display: block;
     max-width: 100%;
