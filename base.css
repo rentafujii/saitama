@@ -76,10 +76,7 @@ nav a{
         height: auto;
     }
 
-    .slider img {
-        max-width: 100%; /* スライダー画像の最大幅を画面サイズに合わせる */
-        height: auto;
-    }
+
     #logo img {
         max-width: 80%; /* スマホ向けにロゴの最大幅を設定 */
     }
