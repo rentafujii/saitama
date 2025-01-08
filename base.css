@@ -15,9 +15,6 @@ nav li{
 nav a{
     background: transport;
 }
-.logo{
-    text-align: center;
-}
 #logo img {
     max-width: 100%;
     height: auto;
