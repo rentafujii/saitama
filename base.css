@@ -52,7 +52,7 @@ nav a{
 /* スマホ用スタイル */
 @media (max-width: 768px) {
     body {
-        background-color: #ffffff; /* 背景色を白に変更（例） */
+        background-color: #E6FFE9;
         font-size: 14px; /* フォントサイズを調整 */
     }
 
