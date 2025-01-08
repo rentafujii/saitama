@@ -18,6 +18,12 @@ nav a{
 .logo{
     text-align: center;
 }
+#logo img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* 中央揃え */
+}
 .tocs1 {
     margin: 0 auto;
     color: navy;
@@ -76,5 +82,8 @@ nav a{
     .slider img {
         max-width: 100%; /* スライダー画像の最大幅を画面サイズに合わせる */
         height: auto;
+    }
+    #logo img {
+        max-width: 80%; /* スマホ向けにロゴの最大幅を設定 */
     }
 }
