@@ -46,3 +46,35 @@ nav a{
     max-width: 100%;
     height: auto;
 }
+.slider, iframe{
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+    .tocs1, .texxt {
+        max-width: 90%; /* スマホ向けに目次や本文の最大幅を調整 */
+        padding: 10px;
+    }
+    nav ul {
+        margin: 20px 0;
+    }
+
+    nav li {
+        margin: 0 0.2rem;
+    }
+
+    nav a {
+        font-size: 0.9em; /* ナビゲーションリンクのフォントサイズ調整 */
+    }
+
+    iframe {
+        width: 100%; /* Google Mapsを画面幅にフィットさせる */
+        height: auto;
+    }
+
+    .slider img {
+        max-width: 100%; /* スライダー画像の最大幅を画面サイズに合わせる */
+        height: auto;
+    }
+}
