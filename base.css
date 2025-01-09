@@ -46,9 +46,32 @@ nav a{
     max-width: 100%;
     height: auto;
 }
+.map-container {
+    position: relative;
+    width: 100%; /* 親コンテナに収まる */
+    padding-bottom: 56.25%; /* デフォルトで16:9の比率 */
+    height: 0;
+    overflow: hidden;
+    max-width: 1200px; /* PCでの最大幅を設定 */
+    margin: 0 auto; /* センター揃え */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* コンテナの幅に合わせる */
+    height: 100%; /* コンテナの高さに合わせる */
+    border: 0; /* 枠線を非表示 */
+}
 /* 基本スタイル（PC用） */
 /* 既存のスタイルが適用されます */
 
+@media (min-width: 1024px) {
+    .map-container {
+        padding-bottom: 50%; /* PC表示時の高さを調整（スライドと同じ比率にする） */
+    }
+}
 /* スマホ用スタイル */
 @media (max-width: 768px) {
     body {
@@ -82,20 +105,7 @@ nav a{
         margin: 10px auto; /* 上下の余白を調整 */
     }
     .map-container {
-        position: relative;
-        width: 100%; /* 親コンテナの幅を画面全体に合わせる */
-        padding-bottom: 56.25%; /* 高さを16:9の比率に設定 */
-        height: 0; /* 高さはpaddingで確保 */
-        overflow: hidden; /* はみ出した部分を隠す */
-    }
-    
-    .map-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%; /* コンテナ幅に合わせる */
-        height: 100%; /* コンテナ高さに合わせる */
-        border: 0; /* 枠線を非表示 */
+        padding-bottom: 75%; /* スマホでは縦長にする */
     }
     
 }
