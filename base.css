@@ -67,11 +67,13 @@ nav a{
 /* 基本スタイル（PC用） */
 /* 既存のスタイルが適用されます */
 
+/* PC用スタイル */
 @media (min-width: 1024px) {
     .map-container {
         padding-bottom: 50%; /* PC表示時の高さを調整（スライドと同じ比率にする） */
     }
 }
+
 /* スマホ用スタイル */
 @media (max-width: 768px) {
     body {
@@ -96,7 +98,7 @@ nav a{
     }
 
     #logo img {
-        width: 80%; /* ロゴ画像を縮小 */
+        width: 90%; /* ロゴ画像を縮小 */
         height: auto;
     }
 
@@ -107,5 +109,4 @@ nav a{
     .map-container {
         padding-bottom: 75%; /* スマホでは縦長にする */
     }
-    
 }
