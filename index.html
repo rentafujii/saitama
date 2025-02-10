@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>埼玉グルメマップ</title>
+    <title>埼玉グルメサイト</title>
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -21,14 +21,55 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollWrap = document.querySelector(".scroll-infinity__wrap");
+            const scrollLists = document.querySelectorAll(".scroll-infinity__list");
+    
+            if (scrollWrap && scrollLists.length > 0) {
+                // 既存のリストを複製して無限スクロールを作る
+                scrollLists.forEach((list) => {
+                    const duplicate = list.cloneNode(true);
+                    scrollWrap.appendChild(duplicate);
+                });
+    
+                let scrollAmount = 0;
+                const scrollSpeed = 0.9; // スクロールの速度（値を大きくすると速くなる）
+    
+                function scrollLoop() {
+                    scrollAmount -= scrollSpeed;
+                    const firstList = scrollWrap.firstElementChild;
+                    if (scrollAmount <= -firstList.offsetWidth) {
+                        scrollAmount = 0; // リスト1つ分スクロールしたらリセット
+                    }
+                    scrollWrap.style.transform = `translateX(${scrollAmount}px)`;
+                    requestAnimationFrame(scrollLoop);
+                }
+    
+                scrollLoop(); // スクロール開始
+            }
+        });
+    </script>
+        
 </head>
 <body>
     <div style="text-align: center">
-    <h1>埼玉県グルメマップ</h1></div>
+        <h1>埼玉県グルメサイト</h1>
+    </div>
     <header>
-        <div style="text-align: center">
-        <div id="logo">
-            <img src="kawagoe.webp"></div>
+        <div class="scroll-infinity">
+            <div class="scroll-infinity__wrap">
+                <ul class="scroll-infinity__list scroll-infinity__list--left">
+                  <li class="scroll-infinity__item"><a href="https://www.city.soka.saitama.jp/cont/s1002/010/020/030/010/21.html"><img src="soka.jpg" /></a></li>               
+                  <li class="scroll-infinity__item"><a href="https://hodosan-ropeway.co.jp/"><img src="yamayama.jpeg" /></a></li>
+                  <li class="scroll-infinity__item"><a href="https://www.city.kawagoe.saitama.jp/"><img src="kawagoe.webp" /></a></li>
+                  <li class="scroll-infinity__item"><a href="https://www.aeon-laketown.jp/"><img src="laketown.webp" /></a></li>
+                  <li class="scroll-infinity__item"><a href="https://navi.city.chichibu.lg.jp/p_flower/1808/"><img src="titibu.jpg" /></a></li>                     
+                  <li class="scroll-infinity__item"><a href="https://www.saitama-arena.co.jp/"><img src="tamaari.jpg" /></a></li>
+                  <li class="scroll-infinity__item"><a href="https://www.jalan.net/kankou/sta_990102/"><img src="urawa.webp" /></a></li>
+                  <li class="scroll-infinity__item"><a href="http://visit-kasukabe.jp/"><img src="kasukabe.jpg" /></a></li>
+                </ul>
+            </div>
         </div>
     </header>
 
@@ -48,11 +89,11 @@
         </div>
         <div class="tocs1">
             <ul>
-                <a style="font-size: 2.5em;">埼玉のおすすめグルメ１０選</a>
+                <a style="font-size: 2.0em;">埼玉のおすすめグルメ１０選</a>
                 <li><a style="font-size: 1.8em;" href="#jump1">１.和食</a></li>
             <ul>
                 <li><a style="font-size: 1.3em;" href="#jump1.1">久良一 こうのす川幅うどん <a></li>
-                <li><a style="font-size: 1.3em;" href="#jump1.2">わらじカツ丼<a></li>
+                <li><a style="font-size: 1.3em;" href="#jump1.2">秩父わらじかつ亭<a></li>
             </ul>
               <li><a style="font-size: 1.8em;" href="#jump2">２.洋食</a></li>
             <ul>
@@ -75,8 +116,13 @@
                 <li><a style="font-size: 1.3em;" href="#jump5.2">阿左美冷蔵 金崎本店 蔵元秘伝みつ<a></li>
             </ul>
                 <li><a style="font-size: 1.8em;" href="#jumpm">６.まとめ</a></li>
+            <ul>
+                <li><a style="font-size: 1.3em;" href="#jump6.1">要点・注意点<a></li>
+                <li><a style="font-size: 1.3em;" href="#jump6.2">感想・おすすめ<a></li>
+            </ul>
         </div>
     </main>
+    
     <div class="texxt">
     <h2 id="jump1">１.和食</h2>
     <h3 id="jump1.1"><p>（１）<a href="https://tabelog.com/saitama/A1104/A110401/11009882/dtlmenu/">久良一 こうのす川幅うどん</a></p> </h3><!--久良一（くらいち）-->
@@ -100,31 +146,47 @@
         </iframe>
     </div>
     
-    <h3 id="jump1.2"><p>（２）<a href="https://tabelog.com/saitama/A1107/A110701/11002483/">わらじカツ丼</h3></a></p>
-    <p>小鹿野町の「安田屋」は、カツの枚数が選べるグルメ丼を提供しているお店で、レトロな雰囲気を醸し出しています。<br>
-        埼玉県秩父地方の名物「わらじカツ丼」は、その名の通り履物のわらじのような大きさのトンカツが特徴的な郷土料理です。<br>
-        丼からはみ出すほどの巨大なカツは、薄く伸ばされたロース肉を使用し、サクサクの衣で揚げられています。甘辛い醤油ベースのタレをくぐらせたカツは、ご飯との相性が抜群で、ボリューム満点の一品となっています。
+    <h3 id="jump1.2"><p>（２）<a href="https://tabelog.com/saitama/A1107/A110701/11044527/">秩父わらじかつ亭 わらじカツ丼</h3></a></p>
+    <p>埼玉県秩父地方の名物「わらじカツ丼」は、その名の通り履物のわらじのような大きさのトンカツが特徴的な郷土料理です。<br>
+       丼からはみ出すほどの巨大なカツは、薄く伸ばされたロース肉を使用し、サクサクの衣で揚げられています。甘辛い醤油ベースのタレをくぐらせたカツは、ご飯との相性が抜群で、ボリューム満点の一品となっています。<br>
+       秩父市にはわらじカツ丼を提供しているお店が数多くあります。今回紹介するのは西武秩父駅の「秩父わらじかつ亭」です。このお店のわらじカツ丼はかつ一枚一枚がとても大きく、程よい薄さで衣もサクサク、キャベツやお米とのバランスも良い、大満足な一品となっています。<br>
+       また、「祭りの湯」と併設されているフードコートの中にあるため、一緒に温泉も楽しむことができます。
     </p>
     <div class="slider">
         <img src="waraji1.jpeg" alt="">
         <img src="waraji2.jpeg" alt="">
+        <img src="norikatu.jpg" alt="">
         <img src="warajikatsutei.jpeg" alt="">
-        <img src="katukanban.jpg" alt="">
     </div>
     <div class="map-container">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3228.506906977449!2d139.0770965407249!3d35.983479013425296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601eca2d73c829b3%3A0x9ee17241ab836c9e!2z44KP44KJ44GY44GL44Gk5Li8IOWuieeUsOWxiyDnp6nniLblupc!5e0!3m2!1sja!2sjp!4v1733366765504!5m2!1sja!2sjp" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3228.2229492800907!2d139.0810034752648!3d35.99041871292845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601ecbd4efe4e3ff%3A0x7f29a2d0ae4f1cf1!2z56ep54i244KP44KJ44GY44GL44Gk5Lqt!5e0!3m2!1sja!2sjp!4v1737269903112!5m2!1sja!2sjp" 
             frameborder="0" 
             allowfullscreen 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
     </div>
+
+    <p><h3>実際に行ってみた感想</h3></p>
+    <p>
+        秩父わらじかつ亭には12時ごろにお伺いしました<br>
+        前述した通り、このお店は「祭りの湯」という温泉施設内のフードコートに併設されています。発券機で食券を購入することでき、カツの枚数やカツカレーにするかどうかなども選ぶことができます。また、漬物や味噌汁もセットでついてきます<br>
+        今回はスタンダードなわらじかつ丼を注文しました。普通のカツ丼よりもずっとインパクトがあり、衣もサクサクでジューシーなので最後まで飽きずに食べ続けることができました。フードコートにはわらじかつ丼だけでなく、秩父名物の味噌ポテトや炙り豚味噌丼など様々なグルメを楽しむことができるのでこちらもおすすめとなっています。<br>
+        わらじかつを提供しているお店は秩父のあらゆる場所にあるのでぜひ、自分にあった味を見つけてください。
+    </p>
  
+    <div class="kansou">
+        <img src="warazi.jpeg" alt="メニュー">
+    </div>
+
+    <br>
+
+    <hr>
     <h2 id="jump2">２.洋食</h2>
     <h3 id="jump2.1"><p>（１）<a href="https://tabelog.com/saitama/A1103/A110304/11018519/">Cafeレストラン ホット・ベリー 朝産み卵のオムライス</h3></a></p>
     <p>アメリカンカントリーを思わせる店内で、BGMはビートルズを中心に70~80年代の曲が流れています。<br>
-       このお店のおすすめ料理は朝産み卵のオムライスです。狭山の養鶏場から毎朝産みたてを仕入れており、味の濃い有精卵をたっぷり３つ使ったオムライスになっています。<br>
+       このお店のおすすめ料理は「朝産み卵のオムライス」です。狭山の養鶏場から毎朝産みたてを仕入れており、味の濃い有精卵をたっぷり３つ使ったオムライスになっています。<br>
        食後はコーヒーを楽しんでもらいたいと、コーヒーの味にもこだわっているそうです。ランチやティータイムにぜひ行ってみてください。
     </p>
     <div class="slider">
@@ -141,7 +203,8 @@
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-    </div>    
+    </div>  
+
     <h3 id="jump2.2"><p>（２）<a href="https://tabelog.com/saitama/A1103/A110302/11035644/">えいすけ ビーフカツレツ定食</h3></a></p>
     <p>昼・夜はいつも行列ができている人気の洋食店です。こちらでは、ビーフカツレツやハンバーグ、オムライスなどの、「ザ・洋食店」というメニューがズラリと並んでいます。<br>
     このお店の名物であり、圧倒的な人気を誇るのが、「ビーフカツレツ定食」です。<br>
@@ -163,6 +226,20 @@
         </iframe>
     </div>    
 
+    <p><h3>実際に行ってみた感想</h3></p>
+    <p>
+       えいすけには19時頃に行かせていただきました。<br>
+       このお店の特徴は夫婦２人で運営しているということです。そのため、お店では出来立ての手作りのをいただくことができ、お店と地域住民の温かいやりとりをみることができます。しかし、２人で営んでいる分提供スピードはあまり早くなく、今回は提供まで一時間ほどかかりました。ですので、待つことが苦手の方には向いていないかもしれません。ですが、その分味は絶品となっています。<br>
+       ビーフカツレツ定食はとてもまろやかで柔らかく、箸で挟んだだけでもちぎれてしまいそうなほどです。あまり脂っこくなく、口当たりはステーキに似たものを感じました。ビーフカツレツ定食は2000円ほどで少し高めな値段ですがそれに見合った、とても美味しい料理でした。ビーフカツレツ定食の他に安めのメニューもあり、そちらもクオリティーが高いので高いと感じる方もぜひ足を運んでみてください。
+    </p>
+
+    <div class="kansou">
+        <img src="onegai.jpeg" alt="お願い">
+    </div>
+
+    <br>
+
+    <hr>
     <h2 id="jump3">３.韓国料理</h2>
     <h3 id="jump3.1"><p>（１）<a href="https://tabelog.com/saitama/A1102/A110203/11053585/">韓国式チキン プルタッチキン</a></p> </h3>
     <p>新越谷駅西口から徒歩2分のところにある韓国料理店です。このお店ではサムギョプサルや韓国式チキンなど、本場の味を再現した韓国料理を楽しむことができます。<br>
@@ -205,16 +282,19 @@
         </iframe>
     </div>    
 
+    <br>
+
+    <hr>
     <h2 id="jump4">４.中華料理</h2>
     <h3 id="jump4.1"><p>（１）<a href="https://tabelog.com/saitama/A1102/A110202/11003155/">大味</h3></a></p>
     <p>埼玉県蕨市にある大人気中華料理店です。席数が少ないので並ぶことが多いみたいです。<br>
-       このお店は人気テレビ番組にも紹介されたことがあり、とにかく量が多いことが話題になりました。このお店の看板料理「海老チャーハン」はYahoo!ニュースで「埼玉県の炒飯名店ランキング」大味が１位に選ばれました。
+       このお店は人気テレビ番組にも紹介されたことがあり、とにかく量が多く、値段が安いことが話題になりました。このお店の看板料理「海老チャーハン」はYahoo!ニュースで「埼玉県の炒飯名店ランキング」大味が１位に選ばれました。
        さらに、店主はホテルニューオータニで修行をしていたということなので、美味しいことは間違いないです。
     </p>
     <div class="slider">
-        <img src="taimicha.jpg" alt="">
-        <img src="taimishu.jpg" alt="">
-        <img src="taimiebi.jpg" alt="">
+        <img src="ebicha.jpeg" alt="">
+        <img src="ebihikaku.jpeg" alt="">
+        <img src="tensindon.jpeg" alt="">
         <img src="taimisoto.jpg" alt="">
     </div>
     <div class="map-container">
@@ -227,11 +307,23 @@
         </iframe>
     </div>    
 
+    <p><h3>実際に行ってみた感想</h3></p>
+    <p>
+       大味には18時頃に行かせていただきました。<br>
+       前述した通りこのお店は量が多いことが売りとなっています。そのため、お店ではタッパーを持参して残りをお持ち帰りすることができるようになっています。そのため今回は私たちもタッパーを持参し、店舗に赴きました。<br>
+       今回は海老チャーハンとエビチリを注文したのですが、あまりの大きさに驚いてしまいました。曰く、このチャーハンはコンビニのおにぎり7～8個分らしく、取り皿で分けつつ食べるもののようですが私たちは一人一皿で頼んでしまいました。それに加えてワカメのスープもセットでついてくるのでとてもボリュームがありました。<br>
+       しかし、量だけではなく、味もとてもクオリティーの高いものでした。チャーハンはパラパラで脂っこくないのでサクサク食べ進めることができ、海老はとてもプリプリでかつ、どっさりとのっているので満足するまで食事を堪能することができました。<br>
+       結局一部タッパーで持ち帰ることとなってしまいましたが2日目でも味は落ちることなく、とても美味しかったです。ですがやはり、量が多いので胃袋の自信がない方はタッパーを持参するか半チャーハンなどにして量を減らすことをおすすめします。
+    </p>
+
+    <div class="kansou">
+        <img src="taiminedan.jpeg" alt="値段表">
+    </div>
+
     <h3 id="jump4.2"><p>（２）<a href="https://tabelog.com/saitama/A1101/A110101/11057297/">火鍋亭</h3></a></p>
-    <p>全国でもわずか６軒しかない、天然氷の蔵元が営む専門店です。
-       昭和風な建物と、開放感あふれる庭園が特徴的です。<br>
-       数あるかき氷メニューの中でも、一番の人気メニューは「蔵元秘伝みつ」です。
-       和三盆をじっくり煮詰めて作った秘伝のみつは上品な味わいで、天然氷本来の味を楽しむことができます。
+    <p>火鍋亭は大宮駅からら徒歩5分の場所にある人気中華料理店であり、ラムと牛肉コースはその中でも１番人気のメニューです。
+        唐辛子や花椒などの中国から直輸入した様々な漢方を使い、秘伝のレシピで仕上げた薬膳火鍋は絶品です。 また、高級感のある店内にはロールカーテンで仕切りを設けたデーブル席や個室も完備しており、デートや 女子会にもよく使われているようです。
+        少しお値段は張ってしまいますが大宮駅周辺で本場の中華を食べたい方には 特におすすめです。
     </p>
     <div class="slider">
         <img src="hinabeniku.jpg" alt="">
@@ -249,6 +341,9 @@
         </iframe>
     </div>
 
+    <br>
+
+    <hr>
     <h2 id="jump5">５.スイーツ</h2>
     <h3 id="jump5.1"><p>（１）<a href="https://tabelog.com/saitama/A1101/A110101/11056799/">世界にひとつだけのケーキcoco 大宮Cocoプリン</h3></a></p>
     <p>Cocoは大宮駅西口から歩いて16分。住宅街の一角にお店をかまえています。
@@ -257,8 +352,8 @@
         別添えのカラメルを加えると、ガラッと味が変わって、一度で二通りの味を楽しむことができます。 
     </p>
     <div class="slider">
-        <img src="cocopurin.jpg" alt="">
-        <img src="syuuu.jpg" alt="">
+        <img src="purin1.jpeg" alt="">
+        <img src="karameru.jpeg" alt="">
         <img src="cocohata.webp" alt="">
         <img src="cocosoto.webp" alt="">
     </div>
@@ -272,6 +367,19 @@
         </iframe>
     </div>    
 
+    <p><h3>実際に行ってみた感想</h3></p>
+    <p>
+        放課後、17時頃に伺いました。平日だったこともあり、とてもスムーズに購入することができました。また、店員さんも笑顔で接客してくださり、とても気分が良かったです！<br>
+        今回、購入した商品は看板メニューである「大宮Cocoプリン」です！大きさは手のひらサイズで、別添えでカラメルがついてきました。<br>
+        なめらかな食感に、程よい甘さかつ、卵が濃厚でとても美味しかったです！また、別添えのカラメルをかけることによってまた違った味も楽しめます！<br>
+        駅からも徒歩で行くことができるので、大宮に行く際はぜひ立ち寄ってみてください！
+    </p>
+
+    <div class="kansou">
+        <img src="Cocogaikan.jpeg" alt="お店外観">
+        <img src="reizouko.jpeg" alt="冷蔵庫">
+    </div>
+
     <h3 id="jump5.2"><p>（２）<a href="https://tabelog.com/saitama/A1107/A110704/11000259/">阿左美冷蔵 金崎本店 蔵元秘伝みつ</h3></a></p>
     <p>全国でもわずか６軒しかない、天然氷の蔵元が営む専門店です。
        昭和風な建物と、開放感あふれる庭園が特徴的です。<br>
@@ -284,6 +392,7 @@
         <img src="asaminaka.jpeg" alt="">
         <img src="asamisoto.jpeg" alt="">
     </div>
+
     <div class="map-container">
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d806.0916605507907!2d139.11189969999998!3d36.0845495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601ec604d41075b3%3A0x73b3c85f208d5d62!2z6Zi_5bem576O5Ya36JS1IOmHkeW0juacrOW6lw!5e0!3m2!1sja!2sjp!4v1733367132002!5m2!1sja!2sjp" 
@@ -292,9 +401,102 @@
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-    </div>    
+    </div>   
+    <p><h3>実際に行ってみた感想</h3></p>
+    <p>
+       開店時間である10:00を目安に伺いました。<br>
+       電車の都合もあり、開店より少し早くに着いてしまったのですが開店より少し早めに店内に入れていただきました。店内に入った後もわざわざ暖房の効いた席に案内していただいたり、かき氷の食べ方やおすすめについても丁寧に説明していただき、とても親切な接客だったと印象に残りました。<br>
+       注文から数分後、注文が届きました。今回は阿佐美冷蔵秘伝の「蔵元秘伝みつ」をかけていただきました。普段お祭りで食べるようなかき氷よりもずっと氷がふわふわしていて、蜜もちょうど良い甘さでサクサク食べ進めることができ、これを食べれただけでも秩父に来て良かったと思えるほど。<br>
+       それに加え、食後は無料で足湯に入ることができ、かき氷で冷えた体を温めることができるサービスもついています。冬に訪れたのでかき氷は体が冷えてしまうと考えていましたが、結果としては大満足の体験ができました！
+    </p> 
 
-    <h2 id="jumpm">６.まとめ</h2>
+    <div class="kansou">
+        <img src="asamitennai.jpeg" alt="店内">
+        <img src="asiyu.jpeg" alt="足湯">
     </div>
+
+    <br>
+    
+    <hr>
+    <h2 id="jumpm">６.まとめ</h2>
+    <h3 id="jump6.1"><p>（１）要点・注意点</h3></p>
+    <p>今回のグルメサイトでは埼玉県のグルメについて説明していきました。
+       営業時間があまり長くない店舗やかなりお値段が張ってしまう場合もあるので青色になっている文字から営業時間やアクセスについて調べることをおすすめします。特に秩父などの田舎にある店舗は電車の数も限られてくるのでご注意ください。
+    </p>
+    <h3 id="jump6.2"><p>（２）感想・おすすめ</h3></p>
+    <p>今回のサイト作成に当たって、実際にいくつかの店舗へと足を運びました。そのついでに秩父などへ旅行にいったのですが、秩父の自然は写真で見るよりも遥かに迫力があり、地方特有の雰囲気が広がっており感動しました。
+       この経験から、直接足を運ぶことの大切さを学ぶと同時に自分たちはまだまだ埼玉県について知らないんだということを思い知らされました。<br>
+       今回は埼玉のグルメについての紹介でしたが今度は観光スポットやお土産についてのサイトも作成していきたいです。
+    </p>
+    <hr>
+    <h1>他のグルメを知りたい方はこちら</h1>
+<form id="search-form">
+  <input type="text" id="keyword" placeholder="料理名を入力">
+  <button type="submit">検索</button>
+</form>
+<div id="results"></div>
+Powered by <a href="https://webservice.recruit.co.jp/">ホットペッパーグルメ Webサービス</a>
+
+<script>
+    const API_KEY = "c857f8f80790a31c"; // 事前に取得したAPIキー
+    const API_URL = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/";
+  
+    document.getElementById("search-form").addEventListener("submit", async (event) => {
+      event.preventDefault(); // フォーム送信をキャンセル
+  
+      const keyword = document.getElementById("keyword").value.trim();
+      if (!keyword) {
+        document.getElementById("results").innerHTML = "キーワードを入力してください。";
+        return;
+      }
+  
+      document.getElementById("results").innerHTML = "検索中...";
+  
+      // CORS回避用のプロキシ
+      const proxyUrl = "https://api.allorigins.win/raw?url=";
+  
+      // キーワードに「埼玉」を付加して、埼玉県内の結果が出やすくする
+      const searchQuery = encodeURIComponent(`${keyword} 埼玉`);
+      const requestUrl = `${API_URL}?key=${API_KEY}&format=json&keyword=${searchQuery}&count=30`;
+  
+      try {
+        const response = await fetch(proxyUrl + encodeURIComponent(requestUrl));
+  
+        if (!response.ok) {
+          throw new Error(`HTTPエラー: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        console.log("APIレスポンス:", data); // レスポンス内容をコンソールに表示
+  
+        if (data.results.shop && data.results.shop.length > 0) {
+          displayResults(data.results.shop);
+        } else {
+          document.getElementById("results").innerHTML = "該当するお店が見つかりませんでした。";
+        }
+      } catch (error) {
+        console.error("エラー:", error);
+        document.getElementById("results").innerHTML = "データ取得に失敗しました。";
+      }
+    });
+  
+    function displayResults(shops) {
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+  
+      shops.forEach(shop => {
+        const shopDiv = document.createElement("div");
+        shopDiv.innerHTML = `
+          <h2>${shop.name}</h2>
+          <p>住所: ${shop.address}</p>
+          <p><a href="${shop.urls.pc}" target="_blank">店舗情報を見る</a></p>
+          <img src="${shop.photo.pc.l}" alt="${shop.name}">
+          <hr>
+        `;
+        resultsDiv.appendChild(shopDiv);
+      });
+    }
+  </script>
+  
 </body>
 </html>
